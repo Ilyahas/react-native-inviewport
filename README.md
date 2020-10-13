@@ -33,7 +33,8 @@ render() {
 
 
 ### Event props
-* [onChange] (#onChange)
+* [onChange](#onChange)
+
 
 ### Configurable props
 #### delay
