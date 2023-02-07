@@ -1,10 +1,14 @@
-# @coffeebeanslabs/react-native-inviewport
+# @Ilyahas/react-native-inviewport
+
+Based on @coffeebeanslabs/react-native-inviewport.
+*Removed interval that gives ```"Please report: Excessive number of pending callbacks: 501"``` Warning.
+
 Detect if component is in device viewport.
 I based this off:https://github.com/yamill/react-native-inviewport with some slight modifications.
 
 ## Install
 
-```npm i @coffeebeanslabs/react-native-inviewport```
+```npm i @ilyahas/react-native-inviewport```
 
 ## Usage
 Assuming you already setup your component, here's a quick example.

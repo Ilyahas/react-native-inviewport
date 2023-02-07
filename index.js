@@ -15,46 +15,31 @@ export default class InViewPort extends Component {
     }
   }
 
-  componentWillUnmount() {
-    this.stopWatching()
-  }
-
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.disabled) {
-      this.stopWatching()
-    } else {
+    if (!nextProps.disabled) {
       this.lastValue = null
       this.startWatching()
     }
   }
 
   startWatching() {
-    if (this.interval) {
+    if (!this.myview) {
       return
     }
-    this.interval = setInterval(() => {
-      if (!this.myview) {
-        return
-      }
-      this.myview.measure((x, y, width, height, pageX, pageY) => {
-        this.setState({
-          rectTop: pageY,
-          rectBottom: pageY + height,
-          rectWidth: pageX + width
-        })
+    this.myview.measure((x, y, width, height, pageX, pageY) => {
+      this.setState({
+        rectTop: pageY,
+        rectBottom: pageY + height,
+        rectWidth: pageX + width
       })
-      this.isInViewPort()
-    }, this.props.delay || 100)
-  }
-
-  stopWatching() {
-    this.interval = clearInterval(this.interval)
+    })
+    this.isInViewPort()
   }
 
   isInViewPort() {
     const window = Dimensions.get('window')
     const isVisible =
-      this.state.rectBottom != 0 &&
+      this.state.rectBottom !== 0 &&
       this.state.rectTop >= 0 &&
       this.state.rectBottom <= window.height &&
       this.state.rectWidth > 0 &&
