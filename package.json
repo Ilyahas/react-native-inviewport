@@ -1,6 +1,6 @@
 {
   "name": "@ilyahas/react-native-inviewport",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Detect if component is in device viewport",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,10 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ilyahas/react-native-inviewport"
+    "url": "git+https://github.com/Ilyahas/react-native-inviewport.git"
   },
-  "homepage": "https://github.com/Ilyahas/react-native-inviewport#readme"
+  "homepage": "https://github.com/Ilyahas/react-native-inviewport#readme",
+  "bugs": {
+    "url": "https://github.com/Ilyahas/react-native-inviewport/issues"
+  }
 }

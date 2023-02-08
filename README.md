@@ -1,7 +1,8 @@
 # @Ilyahas/react-native-inviewport
 
 Based on @coffeebeanslabs/react-native-inviewport.
-*Removed interval that gives ```"Please report: Excessive number of pending callbacks: 501"``` Warning.
+*Fix freezing app with ```"Please report: Excessive number of pending callbacks: 501"``` Warning.
+If you have the same issue, try this npm.
 
 Detect if component is in device viewport.
 I based this off:https://github.com/yamill/react-native-inviewport with some slight modifications.
@@ -41,7 +42,7 @@ render() {
 
 
 ### Configurable props
-#### delay (not work, because of removed interval)
+#### delay
 A number that indicates milliseconds of periodically delay to check component visibility. By default it is 100ms.
 Example: 
 ```
