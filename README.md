@@ -41,7 +41,7 @@ render() {
 
 
 ### Configurable props
-#### delay
+#### delay (not work, because of removed interval)
 A number that indicates milliseconds of periodically delay to check component visibility. By default it is 100ms.
 Example: 
 ```
