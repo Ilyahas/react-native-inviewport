@@ -25,7 +25,6 @@ export default class InViewPort extends Component {
       this.stopWatching()
     } else {
       this.lastValue = null
-      this.timeoutId = null
       this.startWatching()
     }
   }
@@ -43,7 +42,7 @@ export default class InViewPort extends Component {
         LayoutAnimation.configureNext({
           update: {
             type: LayoutAnimation.Types.easeInEaseOut,
-            duration: this.props.delay || 200
+            duration: this.props.animationDelay || 100
           }
         })
         this.myview.measure((x, y, width, height, pageX, pageY) => {
@@ -53,12 +52,12 @@ export default class InViewPort extends Component {
             rectLeft: pageX,
             rectRight: pageX + width
           }, () => {
+            this.isInViewPort()
             this.pendingAnimation = false
           })
         })
-        this.isInViewPort()
       }
-    }, this.props.delay || 200)
+    }, this.props.delay || 1000)
   }
 
   stopWatching() {
@@ -74,32 +73,11 @@ export default class InViewPort extends Component {
       this.state.rectBottom != 0 &&
       this.state.rectTop >= 0 &&
       this.state.rectBottom <= window.height
-    if (this.lastValue !== isVisible) {
-      if (isVisible) {
-        if (this.props.timeout) {
-          this.timeoutId = setTimeout(() => {
-            this.isFullyVisible();
-          }, this.props.timeout);
-        } else {
-          this.isFullyVisible();
-        }
-      } else {
-        clearTimeout(this.timeoutId);
-      }
-      this.lastValue = isVisible
+    if (!this.state.rectRight && !this.state.rectLeft && !this.state.rectBottom && !this.state.rectTop) {
+      this.stopWatching();
     }
-  }
-
-  isFullyVisible() {
-    const window = Dimensions.get('window')
-    const isVisible =
-      this.state.rectRight != 0 &&
-      this.state.rectLeft >= 0 &&
-      this.state.rectRight <= window.width &&
-      this.state.rectBottom != 0 &&
-      this.state.rectTop >= 0 &&
-      this.state.rectBottom <= window.height
-    if (isVisible) {
+    if (this.lastValue !== isVisible) {
+      this.lastValue = isVisible
       this.props.onChange(isVisible)
     }
   }
