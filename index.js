@@ -73,9 +73,6 @@ export default class InViewPort extends Component {
       this.state.rectBottom != 0 &&
       this.state.rectTop >= 0 &&
       this.state.rectBottom <= window.height
-    if (!this.state.rectRight && !this.state.rectLeft && !this.state.rectBottom && !this.state.rectTop) {
-      this.stopWatching();
-    }
     if (this.lastValue !== isVisible) {
       this.lastValue = isVisible
       this.props.onChange(isVisible)
